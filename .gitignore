@@ -15,3 +15,8 @@ AppVariantPreviewPayload.zip
 mergedManifestDescriptor.json
 APIExternalProducer.js
 .*/APIExternalProducer.js
+node_modules
+dist
+.abap-deployrc.yaml
+.env
+.ABAPDeployResources

@@ -24,6 +24,7 @@
 	"license": "UNLICENSED",
 	"dependencies": {
 		"@openui5/sap.ui.core": "1.60.*",
-		"@openui5/themelib_sap_belize": "1.60.*"
+		"@openui5/themelib_sap_belize": "1.60.*",
+		"@sap/abap-deploy": "^0.10.23"
 	}
 }

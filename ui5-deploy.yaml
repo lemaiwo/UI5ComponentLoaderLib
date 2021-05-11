@@ -1,0 +1,27 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '1.0'
+metadata:
+  name: 'zcomploaderlib'
+type: library
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: env:TARGET
+          client: env:CLIENT
+          auth: basic
+        credentials:
+          username: env:SAPUSERID
+          password: env:SAPPWD
+        app:
+          name: ZCP_LIB
+          description: Component Loader Lib
+          package: ZWL_CL
+          transport: XXXXX
