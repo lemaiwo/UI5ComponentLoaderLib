@@ -48,15 +48,6 @@ sap.ui.define([
 		},
 		//################ Private APIs ###################
 
-		_getMessagePopover: function () {
-			// create popover lazily
-			if (!this._oMessagePopover) {
-				this._oMessagePopover = sap.ui.xmlfragment(this.getView().getId(),
-					"be.elia.pm.BottleManager.view.common.fragment.MessagePopover", this);
-				this.getView().addDependent(this._oMessagePopover);
-			}
-			return this._oMessagePopover;
-		},
 		onExit: function () {
 			_fragments = [];
 		},
