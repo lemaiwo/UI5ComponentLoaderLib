@@ -23,7 +23,7 @@ builder:
           username: env:SAPUSERID
           password: env:SAPPWD
         app:
-          name: ZCP_LIB
+          name: ZCOMPLOADER_LIB
           description: Component Loader Lib
           package: env:PACKAGE
           transport: env:TRANSPORT
