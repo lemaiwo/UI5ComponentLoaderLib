@@ -3,28 +3,21 @@
 	"version": "1.0.0",
 	"private": true,
 	"devDependencies": {
-		"@sap/di.code-validation.js": "1.1.6",
-		"@sap/di.code-validation.xml": "1.1.10",
-		"@ui5/cli": "1.2.1",
-		"grunt": "1.0.1",
-		"grunt-run": "0.8.1",
-		"eslint": "^6.2.2",
-		"nwabap-ui5uploader": "^0.3.4"
+		"@sap/ux-ui5-tooling": "^1.1.10",
+		"@ui5/cli": "^2.4.0",
+		"rimraf": "^3.0.2",
+		"ui5-task-flatten-library": "^0.2.2",
+		"ui5-task-transpile": "^0.3.1"
 	},
-	"main": "Gruntfile.js",
 	"scripts": {
-		"lint": "eslint webapp",
-		"clean": "rm -rf dist",
-		"build": "ui5 build --include-task=generateManifestBundle generateCachebusterInfo ",
-		"build-for-deploy": "npm run build && npm run flatten && npm run clean-after-flatten",
-		"flatten": "cp -r dist/resources/be/wl/zcomploaderlib/* dist && cp dist/resources/be/wl/zcomploaderlib/.library dist && cp dist/resources/.Ui5RepositoryTextFiles dist",
-		"clean-after-flatten": "rm -rf dist/resources dist/test-resources",
-		"deploy": "npx nwabap upload --base ./dist --conn_server \"$ABAP_DEVELOPMENT_SERVER_HOST\" --conn_user \"$ABAP_DEVELOPMENT_USER\" --conn_password \"$ABAP_DEVELOPMENT_PASSWORD\" --abap_package \"$ABAP_PACKAGE\" --abap_bsp \"$ABAP_APPLICATION_NAME\" --abap_bsp_text \"$ABAP_APPLICATION_DESC\" --abap_transport \"$CI_COMMIT_TITLE\""
+		"build": "ui5 build --include-task=generateManifestBundle generateResourcesJson",
+		"deploy": "ui5 build preload --clean-dest --config ui5-deploy.yaml --include-task=generateManifestBundle generateResourcesJson && rimraf archive.zip"
 	},
-	"license": "UNLICENSED",
-	"dependencies": {
-		"@openui5/sap.ui.core": "1.60.*",
-		"@openui5/themelib_sap_belize": "1.60.*",
-		"@sap/abap-deploy": "^0.10.23"
+	"ui5": {
+		"dependencies": [
+			"ui5-task-flatten-library",
+			"ui5-task-transpile",
+			"@sap/ux-ui5-tooling"
+		]
 	}
 }

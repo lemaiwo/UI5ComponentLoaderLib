@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
 
-specVersion: '1.0'
+specVersion: '2.2'
 metadata:
   name: 'zcomploaderlib'
 type: library
@@ -10,8 +10,10 @@ builder:
       - /test/**
       - /localService/**
   customTasks:
+    - name: ui5-task-flatten-library
+      afterTask: generateResourcesJson
     - name: deploy-to-abap
-      afterTask: generateCachebusterInfo
+      afterTask: generateResourcesJson
       configuration:
         target:
           url: env:TARGET
@@ -23,5 +25,13 @@ builder:
         app:
           name: ZCP_LIB
           description: Component Loader Lib
-          package: ZWL_CL
-          transport: XXXXX
+          package: env:PACKAGE
+          transport: env:TRANSPORT
+    - name: ui5-task-transpile
+      afterTask: replaceVersion
+      configuration:
+        debug: true
+        removeConsoleStatements: true
+        transpileAsync: true
+        excludePatterns:
+        - "lib/"

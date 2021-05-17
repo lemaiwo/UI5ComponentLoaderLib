@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("be.wl.zcomploaderlib.cep.BaseController", {
+	return Controller.extend("be.wl.zcomploaderlib.cl.BaseController", {
 		onInit: function () {
 			if (this.onUpdateInput) {
 				this.getEventBus().subscribe("cep", "input", this.onUpdateInput, this);

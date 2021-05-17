@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (UIComponent) {
 	"use strict";
 
-	return UIComponent.extend("be.wl.zcomploaderlib.cep.UIComponent", {
+	return UIComponent.extend("be.wl.zcomploaderlib.cl.UIComponent", {
 
 		metadata: {
 			properties: {
