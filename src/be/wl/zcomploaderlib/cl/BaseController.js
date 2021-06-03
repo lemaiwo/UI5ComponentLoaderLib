@@ -13,16 +13,16 @@ sap.ui.define([
 				}
 			}
 		},
+		onExit: function () {
+			if (this.onUpdateInput) {
+				this.getEventBus().unsubscribe("cep", "input", this.updateInput, this);
+			}
+		},
 		getComponentProperty: function (propertyName) {
 			return this.getOwnerComponent().getProperty(propertyName);
 		},
 		getEventBus: function () {
 			return this.getOwnerComponent().getEventBus();
-		},
-		onExit: function () {
-			if (this.onUpdateInput) {
-				this.getEventBus().unsubscribe("cep", "input", this.updateInput, this);
-			}
 		}
 	});
 });

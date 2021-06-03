@@ -16,9 +16,6 @@ sap.ui.define([
 					parameters: {
 						type: "string",
 						level: "string",
-						/**
-						 * The item whose selection has changed. In <code>MultiSelect</code> mode, only the up-most selected item is returned. This parameter can be used for single-selection modes.
-						 */
 						data: {
 							type: "object"
 						}
@@ -37,12 +34,9 @@ sap.ui.define([
 			if (oCompData && typeof oCompData.input === "object") {
 				this.setInput(oCompData.input);
 			}
-			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 		},
 		setInput: function (input) {
-			// var root = this.getRootControl();
-			// root.getController().updateFilter(assets);
 			var bus = this.getEventBus();
 			if (input) {
 				bus.publish("cep", "input", input);
